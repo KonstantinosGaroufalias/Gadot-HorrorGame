@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://nf4atckc8nh5"]
+
+[ext_resource type="MeshLibrary" uid="uid://cqij3pgsfv3lk" path="res://Scenes/mesh_lib2.meshlib" id="1_14u3x"]
+
+[node name="Gridmap" type="Node3D"]
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("1_14u3x")
+cell_size = Vector3(1, 1, 1)
+data = {
+"cells": PackedInt32Array(0, 2, 393216, 1, 2, 393216, 2, 2, 393216, 3, 2, 393216, 3, 3, 393216, 2, 4, 393216, 3, 4, 393216, 4, 4, 393216, 5, 4, 393216, 3, 5, 393216, 3, 6, 393216, 5, 6, 393216, 4, 6, 393216)
+}

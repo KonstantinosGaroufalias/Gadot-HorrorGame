@@ -1,0 +1,30 @@
+[gd_scene load_steps=8 format=3 uid="uid://bynjy7urqxq1s"]
+
+[ext_resource type="Script" path="res://Scripts/papper.gd" id="1_cjycp"]
+[ext_resource type="Texture2D" uid="uid://dpdal43n33yn8" path="res://icon.svg" id="3_ek6og"]
+[ext_resource type="Script" path="res://Scripts/mesh_instance_3d2.gd" id="3_n0he7"]
+[ext_resource type="AudioStream" uid="uid://dxa8mcyt5o5wi" path="res://Sounds/paperpickup.mp3" id="5_cskvt"]
+[ext_resource type="Material" uid="uid://dtlpmdcfkd2i0" path="res://Materials/paper.tres" id="5_tv4i3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iba84"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_aulqu"]
+
+[node name="paper" type="StaticBody3D"]
+script = ExtResource("1_cjycp")
+paper_material = ExtResource("5_tv4i3")
+paper_ui_texture = ExtResource("3_ek6og")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.27453, 0, 0, 0, 0.47719, 0, 0, 0, 2.52051, 0, 0.661156, 0.100393)
+shape = SubResource("BoxShape3D_iba84")
+
+[node name="paper_mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.643, 0, 0, 0, 0.018, 0, 0, 0, 1.26561, -0.0147945, 0.437172, 0.00347269)
+material_override = ExtResource("5_tv4i3")
+mesh = SubResource("PlaneMesh_aulqu")
+script = ExtResource("3_n0he7")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_cskvt")
+volume_db = 4.952

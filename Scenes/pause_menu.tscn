@@ -1,0 +1,70 @@
+[gd_scene load_steps=2 format=3 uid="uid://l2susafxl0wb"]
+
+[ext_resource type="Script" path="res://Scripts/pause_menu.gd" id="1_uftup"]
+
+[node name="Pause_menu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uftup")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1156.0
+offset_bottom = 656.0
+color = Color(0, 0, 0, 0.529412)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 429.0
+offset_top = 190.0
+offset_right = 725.0
+offset_bottom = 317.0
+theme_override_font_sizes/normal_font_size = 81
+text = "Paused"
+
+[node name="resume_button" type="Button" parent="."]
+modulate = Color(0.183333, 1, 0, 1)
+layout_mode = 0
+offset_left = 485.0
+offset_top = 328.0
+offset_right = 669.0
+offset_bottom = 384.0
+text = "Resume"
+
+[node name="setting_button" type="Button" parent="."]
+modulate = Color(0.183333, 1, 0, 1)
+layout_mode = 0
+offset_left = 485.0
+offset_top = 392.0
+offset_right = 669.0
+offset_bottom = 448.0
+text = "Settings
+"
+
+[node name="controlls_button" type="Button" parent="."]
+modulate = Color(0.183333, 1, 0, 1)
+layout_mode = 0
+offset_left = 485.0
+offset_top = 456.0
+offset_right = 669.0
+offset_bottom = 512.0
+text = "Controls
+"
+
+[node name="quit_button" type="Button" parent="."]
+modulate = Color(0.183333, 1, 0, 1)
+layout_mode = 0
+offset_left = 484.0
+offset_top = 520.0
+offset_right = 668.0
+offset_bottom = 576.0
+text = "Quit
+"
+
+[connection signal="pressed" from="resume_button" to="." method="resume"]
+[connection signal="pressed" from="quit_button" to="." method="quit"]

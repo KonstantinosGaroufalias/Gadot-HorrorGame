@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://qmthqu5cw6wc"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_gh6vk"]
+[ext_resource type="Script" path="res://Scripts/camera.gd" id="2_hpo4u"]
+[ext_resource type="Script" path="res://Scripts/flashlight.gd" id="3_80766"]
+[ext_resource type="AudioStream" uid="uid://1auvok010elm" path="res://Sounds/pickupSound.mp3" id="4_so3mq"]
+[ext_resource type="Script" path="res://Scripts/raycast.gd" id="4_u6ivx"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_eng40"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_b6frt"]
+radial_segments = 16
+
+[node name="Player" type="CharacterBody3D"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_gh6vk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_eng40")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
+cast_shadow = 0
+mesh = SubResource("CapsuleMesh_b6frt")
+
+[node name="head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.786702, 0)
+script = ExtResource("2_hpo4u")
+
+[node name="Camera3D" type="Camera3D" parent="head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.124127)
+cull_mask = 1032191
+
+[node name="flashlight" type="SpotLight3D" parent="head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.265086, -0.585923, -0.219467)
+visible = false
+light_energy = 5.923
+shadow_enabled = true
+spot_range = 30.001
+spot_angle = 33.54
+script = ExtResource("3_80766")
+
+[node name="toggle" type="AudioStreamPlayer" parent="head/flashlight"]
+stream = ExtResource("4_so3mq")
+
+[node name="RayCast3D" type="RayCast3D" parent="head"]
+transform = Transform3D(1.6, 0, 0, 0, -4.00842e-08, -2.34535, 0, 0.91702, -1.02518e-07, 0, 0, -0.371955)
+collision_mask = 3
+script = ExtResource("4_u6ivx")
+
+[node name="toggle" type="AudioStreamPlayer" parent="head"]
+stream = ExtResource("4_so3mq")
+
+[node name="pickup" type="AudioStreamPlayer" parent="head"]
+stream = ExtResource("4_so3mq")

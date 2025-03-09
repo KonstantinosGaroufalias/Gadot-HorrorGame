@@ -1,0 +1,61 @@
+[gd_scene load_steps=7 format=3 uid="uid://2wea34wokyxh"]
+
+[ext_resource type="Script" path="res://Scripts/light.gd" id="1_v3svi"]
+[ext_resource type="Material" uid="uid://b8g8d8ygr3mrq" path="res://Materials/light.tres" id="1_w5w15"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_5kld3"]
+
+[sub_resource type="Animation" id="Animation_4xqgq"]
+resource_name = "flashing_light"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OmniLight3D:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.266667, 0.466667, 0.566667, 0.833333, 0.966667, 1.1, 1.36667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 0.065, 0.59, 0.158, 1.0, 0.59, 1.275, 1.0, 0.59]
+}
+
+[sub_resource type="Animation" id="Animation_sy110"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OmniLight3D:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xrv0w"]
+_data = {
+"RESET": SubResource("Animation_sy110"),
+"flashing_light": SubResource("Animation_4xqgq")
+}
+
+[node name="light" type="Node3D"]
+script = ExtResource("1_v3svi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_w5w15")
+cast_shadow = 0
+mesh = SubResource("SphereMesh_5kld3")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.880031, 0)
+shadow_enabled = true
+omni_range = 8.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xrv0w")
+}

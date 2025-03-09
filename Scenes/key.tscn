@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://dkbrxlx8aaqwi"]
+
+[ext_resource type="Script" path="res://Scripts/pickup_key.gd" id="1_8ro1w"]
+[ext_resource type="Material" uid="uid://dfdxljdwbw11g" path="res://Materials/key.tres" id="1_srv3t"]
+[ext_resource type="Script" path="res://Scripts/mesh_instance_3d2.gd" id="3_8b8ky"]
+[ext_resource type="AudioStream" uid="uid://1auvok010elm" path="res://Sounds/pickupSound.mp3" id="3_lr404"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_62aew"]
+size = Vector3(1, 1, 0.419434)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5j4wm"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_3wn62"]
+rings = 6
+ring_segments = 3
+
+[node name="key" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, -0.0242402, 0.999706, 0, -0.999706, -0.0242402, 0, 0, 0)
+script = ExtResource("1_8ro1w")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.852184, 0, 0, 0, 0.314116, -6.70552e-08, 0, 3.49246e-08, 0.669572, -0.0465328, -0.00884353, 0.0786539)
+shape = SubResource("BoxShape3D_62aew")
+
+[node name="pickup" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_lr404")
+volume_db = 9.524
+
+[node name="key" type="MeshInstance3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="key"]
+transform = Transform3D(-3.67794e-09, -0.46897, 0, 0.0841415, -2.04993e-08, 5.82077e-11, 0, 0, 0.0224106, 0, 0, 0)
+material_override = ExtResource("1_srv3t")
+mesh = SubResource("BoxMesh_5j4wm")
+skeleton = NodePath("../..")
+script = ExtResource("3_8b8ky")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="key"]
+transform = Transform3D(-3.67794e-09, -0.0619085, 0, 0.0841415, -2.70611e-09, 5.82077e-11, 0, 0, 0.0224106, 0.203516, -0.079935, 1.16415e-10)
+material_override = ExtResource("1_srv3t")
+mesh = SubResource("BoxMesh_5j4wm")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="key"]
+transform = Transform3D(-3.67794e-09, -0.0364559, 0, 0.0841415, -1.59354e-09, 5.82077e-11, 0, 0, 0.0224106, 0.116807, -0.0498322, 0)
+material_override = ExtResource("1_srv3t")
+mesh = SubResource("BoxMesh_5j4wm")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="key"]
+transform = Transform3D(1.6158e-16, 5.02681e-09, 0.0994269, 0.0845664, -5.12227e-09, 0, 3.95812e-09, 0.115, -4.34609e-09, -0.302795, 0, 0)
+material_override = ExtResource("1_srv3t")
+mesh = SubResource("TorusMesh_3wn62")
+skeleton = NodePath("../..")
+script = ExtResource("3_8b8ky")

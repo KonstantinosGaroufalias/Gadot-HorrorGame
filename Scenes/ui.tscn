@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://q5rdo46y3dly"]
+
+[ext_resource type="Texture2D" uid="uid://dpdal43n33yn8" path="res://icon.svg" id="1_ble6k"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_oio0j"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -37.0
+offset_top = -25.0
+offset_right = -37.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="sprint_slider" type="VSlider" parent="."]
+layout_mode = 0
+offset_left = 1145.0
+offset_top = 417.0
+offset_right = 1177.0
+offset_bottom = 657.0
+theme_override_icons/grabber = SubResource("ImageTexture_oio0j")
+max_value = 1.0
+step = 0.0
+value = 1.0
+
+[node name="interact_text" type="RichTextLabel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 50.495
+offset_top = 38.0
+offset_right = 197.235
+offset_bottom = 75.05
+scale = Vector2(2.675, 2.675)
+text = "[E] Interact"
+
+[node name="paper" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 431.0
+offset_top = 107.0
+offset_right = 762.0
+offset_bottom = 567.0
+texture = ExtResource("1_ble6k")
+expand_mode = 1
