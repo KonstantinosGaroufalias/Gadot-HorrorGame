@@ -48,7 +48,7 @@ radial_segments = 12
 script = ExtResource("1_ieq1x")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.996414, 0, 0, 0, 2.89548, 0, 0, -0.32564)
+transform = Transform3D(2.76705, 0, 0, 0, 3.4618, 0, 0, 0, 2.89548, 0, 0, -0.32564)
 shape = SubResource("BoxShape3D_1bjki")
 
 [node name="flashlight" type="SpotLight3D" parent="."]

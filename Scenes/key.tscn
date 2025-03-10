@@ -19,7 +19,7 @@ transform = Transform3D(1, 0, 0, 0, -0.0242402, 0.999706, 0, -0.999706, -0.02424
 script = ExtResource("1_8ro1w")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.852184, 0, 0, 0, 0.314116, -6.70552e-08, 0, 3.49246e-08, 0.669572, -0.0465328, -0.00884353, 0.0786539)
+transform = Transform3D(0.852184, 0, 0, 0, 0.786919, -1.52737e-07, 0, 8.3819e-08, 1.5491, -0.0465328, -0.0140019, 0.291394)
 shape = SubResource("BoxShape3D_62aew")
 
 [node name="pickup" type="AudioStreamPlayer" parent="."]

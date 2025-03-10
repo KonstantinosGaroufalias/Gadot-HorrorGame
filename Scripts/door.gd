@@ -3,6 +3,14 @@ extends StaticBody3D
 var interactable = true
 var opened = false
 
+func enemy_interact():
+	if opened == false && get_parent().get_parent().locked == false:
+		opened = true
+		$open.play()
+		interactable = false
+		$AnimationPlayer.play("open")
+		await get_tree().create_timer(1.5,false).timeout
+		interactable = true
 
 # Called when the node enters the scene tree for the first time.
 func interact():

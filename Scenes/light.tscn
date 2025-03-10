@@ -1,9 +1,26 @@
-[gd_scene load_steps=7 format=3 uid="uid://2wea34wokyxh"]
+[gd_scene load_steps=9 format=3 uid="uid://2wea34wokyxh"]
 
 [ext_resource type="Script" path="res://Scripts/light.gd" id="1_v3svi"]
 [ext_resource type="Material" uid="uid://b8g8d8ygr3mrq" path="res://Materials/light.tres" id="1_w5w15"]
+[ext_resource type="AudioStream" uid="uid://cf1c4jqpguwrg" path="res://Sounds/lights-flicker.mp3" id="3_3o1c1"]
+[ext_resource type="AudioStream" uid="uid://bogu7wvlp2y4x" path="res://Sounds/lights-buzz.mp3" id="4_uv3xv"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_5kld3"]
+
+[sub_resource type="Animation" id="Animation_sy110"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OmniLight3D:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
 
 [sub_resource type="Animation" id="Animation_4xqgq"]
 resource_name = "flashing_light"
@@ -19,21 +36,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [1.0, 0.065, 0.59, 0.158, 1.0, 0.59, 1.275, 1.0, 0.59]
-}
-
-[sub_resource type="Animation" id="Animation_sy110"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("OmniLight3D:light_energy")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xrv0w"]
@@ -59,3 +61,18 @@ omni_range = 8.0
 libraries = {
 "": SubResource("AnimationLibrary_xrv0w")
 }
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.010776, 0)
+stream = ExtResource("3_3o1c1")
+volume_db = 0.725
+max_db = 2.055
+pitch_scale = 0.9
+
+[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.010776, 0)
+stream = ExtResource("4_uv3xv")
+volume_db = -9.002
+max_db = 2.055
+pitch_scale = 0.9
+max_distance = 15.0

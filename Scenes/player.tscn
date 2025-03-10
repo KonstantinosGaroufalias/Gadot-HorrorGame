@@ -12,8 +12,8 @@
 radial_segments = 16
 
 [node name="Player" type="CharacterBody3D"]
-collision_layer = 3
-collision_mask = 3
+collision_layer = 11
+collision_mask = 11
 script = ExtResource("1_gh6vk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -33,7 +33,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.124127)
 cull_mask = 1032191
 
 [node name="flashlight" type="SpotLight3D" parent="head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.265086, -0.585923, -0.219467)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.265086, -0.0220039, 0.0593709)
 visible = false
 light_energy = 5.923
 shadow_enabled = true
@@ -45,7 +45,7 @@ script = ExtResource("3_80766")
 stream = ExtResource("4_so3mq")
 
 [node name="RayCast3D" type="RayCast3D" parent="head"]
-transform = Transform3D(1.6, 0, 0, 0, -4.00842e-08, -2.34535, 0, 0.91702, -1.02518e-07, 0, 0, -0.371955)
+transform = Transform3D(1.6, 0, 0, 0, -1.04605e-07, -2.34535, 0, 2.39309, -1.02518e-07, 0, 0, -0.371955)
 collision_mask = 3
 script = ExtResource("4_u6ivx")
 

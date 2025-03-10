@@ -16,7 +16,7 @@ paper_material = ExtResource("5_tv4i3")
 paper_ui_texture = ExtResource("3_ek6og")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1.27453, 0, 0, 0, 0.47719, 0, 0, 0, 2.52051, 0, 0.661156, 0.100393)
+transform = Transform3D(1.99112, 0, 0, 0, 0.86913, 0, 0, 0, 2.52051, 0, 0.661156, 0.100393)
 shape = SubResource("BoxShape3D_iba84")
 
 [node name="paper_mesh" type="MeshInstance3D" parent="."]
