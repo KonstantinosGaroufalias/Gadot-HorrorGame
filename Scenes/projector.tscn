@@ -1,0 +1,93 @@
+[gd_scene load_steps=10 format=3 uid="uid://blreipd7wt01l"]
+
+[ext_resource type="Script" path="res://Scripts/projector.gd" id="1_0d1hx"]
+[ext_resource type="Material" uid="uid://b8g8d8ygr3mrq" path="res://Materials/light.tres" id="1_x18qt"]
+[ext_resource type="Texture2D" uid="uid://dpdal43n33yn8" path="res://icon.svg" id="2_ppwd0"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_nu452"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ftev0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sdiba"]
+size = Vector3(0.991638, 0.32605, 0.620361)
+
+[sub_resource type="Animation" id="Animation_s7upb"]
+resource_name = "test"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.433333, 1.16667, 1.6, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -1.5708, 0), Vector3(0, -1.5708, 0), Vector3(7.28675, -1.5708, 0), Vector3(0, -1.5708, 0), Vector3(0, -1.5708, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gw74o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.5708, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8qchd"]
+_data = {
+"RESET": SubResource("Animation_gw74o"),
+"test": SubResource("Animation_s7upb")
+}
+
+[node name="Projector" type="StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+script = ExtResource("1_0d1hx")
+
+[node name="Box" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.220755, 0, 0, 0, 0.536463, 0, 0.127525, -0.0056138)
+mesh = SubResource("BoxMesh_nu452")
+
+[node name="lense" type="MeshInstance3D" parent="."]
+transform = Transform3D(-8.74228e-09, -0.0920442, 1.74846e-08, -0.2, 4.02338e-09, 0, 7.64274e-16, 8.04676e-09, 0.2, -0.508733, 0.126737, 0.00620496)
+material_override = ExtResource("1_x18qt")
+mesh = SubResource("CylinderMesh_ftev0")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="lense"]
+transform = Transform3D(5, -1.42109e-14, 2.5411e-21, 2.84217e-14, 10.8643, 1.42109e-13, -2.5411e-21, -4.26326e-14, 5, -0.0300339, 7.89634, -1.56462e-07)
+light_indirect_energy = 14.333
+light_volumetric_fog_energy = 0.0
+shadow_enabled = true
+omni_range = 1.09
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.25196, 0, 0, 0, 0.611204, 0, 0, 0, 1, -0.025484, 0.225385, -0.0305219)
+shape = SubResource("BoxShape3D_sdiba")
+
+[node name="OmniLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.611186, 0.128531, -4.98559e-09)
+light_energy = 21.75
+light_volumetric_fog_energy = 0.484
+light_projector = ExtResource("2_ppwd0")
+shadow_enabled = true
+spot_range = 14.588
+
+[node name="Decal" type="Decal" parent="OmniLight3D"]
+transform = Transform3D(1, 0, 0, 0, 0.323426, 0, 0, 0, 0.331156, -1.64275, 0, 0)
+visible = false
+texture_albedo = ExtResource("2_ppwd0")
+emission_energy = 2.42
+distance_fade_enabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8qchd")
+}

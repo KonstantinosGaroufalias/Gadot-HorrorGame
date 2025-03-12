@@ -1,0 +1,293 @@
+[gd_scene load_steps=29 format=3 uid="uid://bjlmnl700of1m"]
+
+[ext_resource type="Texture2D" uid="uid://bomkhpap8l02d" path="res://Textures/wall_texture2.jpg.png" id="1_a4k2e"]
+[ext_resource type="Script" path="res://Scripts/door_parent.gd" id="1_f0psl"]
+[ext_resource type="Script" path="res://Scripts/doorR.gd" id="3_foo6v"]
+[ext_resource type="Material" uid="uid://bgs6q6pfkx7ir" path="res://Materials/wood.tres" id="3_wmqnu"]
+[ext_resource type="AudioStream" uid="uid://dv1dhs8008nv2" path="res://Sounds/Door_Open.mp3" id="4_cyonv"]
+[ext_resource type="AudioStream" uid="uid://1k8lckmbx12j" path="res://Sounds/Door_Close.mp3" id="5_uh44h"]
+[ext_resource type="AudioStream" uid="uid://cd3e4w5085vck" path="res://Sounds/Door_Locked.mp3" id="6_fku33"]
+[ext_resource type="Script" path="res://Scripts/doorL.gd" id="8_c88ea"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uf0o4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2fgks"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7nwrq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_krwpk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r66vb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fksae"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_03tgp"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_xlp84"]
+radial_segments = 4
+rings = 2
+
+[sub_resource type="Animation" id="Animation_1kyu7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../../DoorL:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -3.14159, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../..:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7ubsg"]
+resource_name = "closet_close"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../../DoorL:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -4.88692, 0), Vector3(0, -3.14159, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_t07nq"]
+resource_name = "closet_closeR"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../..:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1.74533, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_u0b15"]
+resource_name = "closet_openL"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../../DoorL:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -3.14159, 0), Vector3(0, -4.88692, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_a43my"]
+resource_name = "closet_open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../..:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.74533, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b1v31"]
+_data = {
+"RESET": SubResource("Animation_1kyu7"),
+"closet_closeL": SubResource("Animation_7ubsg"),
+"closet_closeR": SubResource("Animation_t07nq"),
+"closet_openL": SubResource("Animation_u0b15"),
+"closet_openR": SubResource("Animation_a43my")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_55h3g"]
+albedo_texture = ExtResource("1_a4k2e")
+
+[sub_resource type="BoxMesh" id="BoxMesh_huv0e"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4wqce"]
+albedo_texture = ExtResource("1_a4k2e")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gkdd8"]
+albedo_texture = ExtResource("1_a4k2e")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jbfh1"]
+albedo_texture = ExtResource("1_a4k2e")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rl21a"]
+albedo_texture = ExtResource("1_a4k2e")
+
+[node name="Closet" type="Node3D"]
+transform = Transform3D(1.24, 0, 0, 0, 1.24, 0, 0, 0, 0.792905, 0, 1.20932, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 15
+collision_mask = 15
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1.8, 0, 0, 0, 2.44, 0, 0, 0, 0.145, 0, 0, 0)
+shape = SubResource("BoxShape3D_uf0o4")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(-7.86805e-08, 0, -0.145, 0, 2.44, 0, 1.8, 0, -6.33815e-09, 0.840757, 0, 0.882699)
+shape = SubResource("BoxShape3D_2fgks")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(-7.86805e-08, 0, -0.145, 0, 2.44, 0, 1.8, 0, -6.33815e-09, -0.832216, 0, 0.882699)
+shape = SubResource("BoxShape3D_7nwrq")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(9.83412e-15, 1.63674, 6.33815e-09, 7.86805e-08, -7.15441e-08, 0.145, 1.8, 0, -6.33815e-09, 0.0262494, 1.15179, 0.882699)
+shape = SubResource("BoxShape3D_krwpk")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(9.83412e-15, 1.63674, 6.33815e-09, 7.86805e-08, -7.15441e-08, 0.145, 1.8, 0, -6.33815e-09, 0.0262494, -1.12596, 0.882699)
+shape = SubResource("BoxShape3D_r66vb")
+
+[node name="DoorR" type="Node3D" parent="StaticBody3D"]
+transform = Transform3D(0.805058, 0, 0, 0, 1, 0, 0, 0, 1, 0.778452, -0.936798, 1.72943)
+script = ExtResource("1_f0psl")
+
+[node name="hinge" type="Node3D" parent="StaticBody3D/DoorR"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="StaticBody3D/DoorR/hinge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.498332, -0.0323384, 0.00125414)
+collision_layer = 11
+collision_mask = 11
+script = ExtResource("3_foo6v")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D/DoorR/hinge/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 2.30635, 0, 0, 0, 0.183178, 0, 0, 0)
+shape = SubResource("BoxShape3D_fksae")
+
+[node name="door_base" type="MeshInstance3D" parent="StaticBody3D/DoorR/hinge/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 2.30231, 0, 0, 0, 0.104205, 0, 0, 0)
+material_override = ExtResource("3_wmqnu")
+mesh = SubResource("BoxMesh_03tgp")
+
+[node name="door_knob" type="MeshInstance3D" parent="StaticBody3D/DoorR/hinge/StaticBody3D"]
+transform = Transform3D(0.155, 0, 0, 0, 0.155, 0, 0, 0, 0.264026, -0.390861, 0.045, 0.000968501)
+mesh = SubResource("SphereMesh_xlp84")
+
+[node name="open" type="AudioStreamPlayer3D" parent="StaticBody3D/DoorR/hinge/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0361217, 0.0323384, -0.00125412)
+stream = ExtResource("4_cyonv")
+max_distance = 15.0
+
+[node name="close" type="AudioStreamPlayer3D" parent="StaticBody3D/DoorR/hinge/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0361217, 0.0323384, -0.00125412)
+stream = ExtResource("5_uh44h")
+max_distance = 15.0
+
+[node name="locked" type="AudioStreamPlayer3D" parent="StaticBody3D/DoorR/hinge/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0361217, 0.0323384, -0.00125412)
+stream = ExtResource("6_fku33")
+max_distance = 15.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="StaticBody3D/DoorR/hinge/StaticBody3D"]
+libraries = {
+"": SubResource("AnimationLibrary_b1v31")
+}
+
+[node name="DoorL" type="Node3D" parent="StaticBody3D"]
+transform = Transform3D(-0.805058, 0, -2.53518e-06, 0, 1, 0, 2.04097e-06, 0, -1, -0.834039, -0.936798, 1.73743)
+script = ExtResource("1_f0psl")
+
+[node name="hinge" type="Node3D" parent="StaticBody3D/DoorL"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="StaticBody3D/DoorL/hinge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.498332, -0.0323384, 0.00125414)
+collision_layer = 11
+collision_mask = 11
+script = ExtResource("8_c88ea")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D/DoorL/hinge/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 2.30635, 0, 0, 0, 0.183178, 0, 0, 0)
+shape = SubResource("BoxShape3D_fksae")
+
+[node name="door_base" type="MeshInstance3D" parent="StaticBody3D/DoorL/hinge/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 2.30231, 0, 0, 0, 0.104205, 0, 0, 0)
+material_override = ExtResource("3_wmqnu")
+mesh = SubResource("BoxMesh_03tgp")
+
+[node name="door_knob" type="MeshInstance3D" parent="StaticBody3D/DoorL/hinge/StaticBody3D"]
+transform = Transform3D(0.155, 0, 0, 0, 0.155, 0, 0, 0, 0.264026, -0.390861, 0.045, 0.000968501)
+mesh = SubResource("SphereMesh_xlp84")
+
+[node name="open" type="AudioStreamPlayer3D" parent="StaticBody3D/DoorL/hinge/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0361217, 0.0323384, -0.00125412)
+stream = ExtResource("4_cyonv")
+max_distance = 15.0
+
+[node name="close" type="AudioStreamPlayer3D" parent="StaticBody3D/DoorL/hinge/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0361217, 0.0323384, -0.00125412)
+stream = ExtResource("5_uh44h")
+max_distance = 15.0
+
+[node name="locked" type="AudioStreamPlayer3D" parent="StaticBody3D/DoorL/hinge/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0361217, 0.0323384, -0.00125412)
+stream = ExtResource("6_fku33")
+max_distance = 15.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="StaticBody3D/DoorL/hinge/StaticBody3D"]
+root_node = NodePath("../../../../DoorR/hinge/StaticBody3D")
+libraries = {
+"": SubResource("AnimationLibrary_b1v31")
+}
+
+[node name="ClosetBody" type="MeshInstance3D" parent="StaticBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/ClosetBody"]
+transform = Transform3D(1.8, 0, 0, 0, 2.44, 0, 0, 0, 0.145, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_55h3g")
+mesh = SubResource("BoxMesh_huv0e")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="StaticBody3D/ClosetBody"]
+transform = Transform3D(-7.86805e-08, 0, -0.145, 0, 2.44, 0, 1.8, 0, -6.33815e-09, 0.840757, 0, 0.882699)
+material_override = SubResource("StandardMaterial3D_4wqce")
+mesh = SubResource("BoxMesh_huv0e")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="StaticBody3D/ClosetBody"]
+transform = Transform3D(-7.86805e-08, 0, -0.145, 0, 2.44, 0, 1.8, 0, -6.33815e-09, -0.832216, 0, 0.882699)
+material_override = SubResource("StandardMaterial3D_gkdd8")
+mesh = SubResource("BoxMesh_huv0e")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="StaticBody3D/ClosetBody"]
+transform = Transform3D(9.83412e-15, 1.63674, 6.33815e-09, 7.86805e-08, -7.15441e-08, 0.145, 1.8, 0, -6.33815e-09, 0.0262494, 1.15179, 0.882699)
+material_override = SubResource("StandardMaterial3D_jbfh1")
+mesh = SubResource("BoxMesh_huv0e")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="StaticBody3D/ClosetBody"]
+transform = Transform3D(9.83412e-15, 1.63674, 6.33815e-09, 7.86805e-08, -7.15441e-08, 0.145, 1.8, 0, -6.33815e-09, 0.0262494, -1.12596, 0.882699)
+material_override = SubResource("StandardMaterial3D_rl21a")
+mesh = SubResource("BoxMesh_huv0e")
+skeleton = NodePath("../..")

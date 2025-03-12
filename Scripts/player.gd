@@ -8,9 +8,11 @@ var SPRINT_SPEED = 6
 const JUMP_VELOCITY = 4.5
 var sprint_slider
 var movable = false
-
+var rng = RandomNumberGenerator.new() # Initialize here
+@export var walk_footsteps: Array[AudioStream]
 #var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 func _ready():
+	rng.randomize()
 	ORIGINAL_SPEED = SPEED
 	sprint_slider = get_node("/root/" + get_tree().current_scene.name + "/UI/sprint_slider")
 
@@ -39,6 +41,11 @@ func _physics_process(delta: float) -> void:
 		var input_dir := Input.get_vector("left", "right", "forward", "backward")
 		var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 		if direction:
+			if not $footstep_sound.playing:
+				var num = rng.randi_range(0, walk_footsteps.size() - 1)
+				$footstep_sound.stream = walk_footsteps[num]
+				$footstep_sound.play()
+				
 			velocity.x = direction.x * SPEED
 			velocity.z = direction.z * SPEED
 			if Input.is_action_just_pressed("sprint"):

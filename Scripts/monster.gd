@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 
-var SPEED = 3
+var SPEED = 2
 var player
 var caught = false
 var distance: float

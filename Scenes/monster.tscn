@@ -49,7 +49,7 @@ omni_attenuation = 1.359
 stream = ExtResource("3_rpb5a")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
-transform = Transform3D(1, -7.10543e-15, 0, 0, -7.65113e-08, -1, 0, 1.75037, -4.37114e-08, 2.09217e-08, 0.963882, -0.478633)
+transform = Transform3D(1, -7.10543e-15, 0, 0, -7.65113e-08, -1, 0, 1.75037, -4.37114e-08, -1.2584e-08, 1.52689, 0.287887)
 collision_mask = 3
 script = ExtResource("4_w0bep")
 
