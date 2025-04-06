@@ -1,16 +1,22 @@
 extends CharacterBody3D
 
 var ORIGINAL_SPEED
-var SPEED = 2.5
+var SPEED = 3
 var sprint_drain_amount = 0.2
 var sprint_refresh_amount = 0.4
 var SPRINT_SPEED = 6
 const JUMP_VELOCITY = 4.5
 var sprint_slider
 var movable = false
-var rng = RandomNumberGenerator.new() # Initialize here
+var rng = RandomNumberGenerator.new()
+ # Initialize here
 @export var walk_footsteps: Array[AudioStream]
 #var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+
+var is_hiding = false
+
+
+
 func _ready():
 	rng.randomize()
 	ORIGINAL_SPEED = SPEED
@@ -45,7 +51,6 @@ func _physics_process(delta: float) -> void:
 				var num = rng.randi_range(0, walk_footsteps.size() - 1)
 				$footstep_sound.stream = walk_footsteps[num]
 				$footstep_sound.play()
-				
 			velocity.x = direction.x * SPEED
 			velocity.z = direction.z * SPEED
 			if Input.is_action_just_pressed("sprint"):

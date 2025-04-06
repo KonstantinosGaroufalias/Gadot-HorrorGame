@@ -1,7 +1,6 @@
-[gd_scene load_steps=42 format=3 uid="uid://vpxpgvv1w14l"]
+[gd_scene load_steps=41 format=3 uid="uid://vpxpgvv1w14l"]
 
 [ext_resource type="PackedScene" uid="uid://q5rdo46y3dly" path="res://Scenes/ui.tscn" id="1_7ut24"]
-[ext_resource type="Script" path="res://Scripts/level_manager.gd" id="1_vt3i8"]
 [ext_resource type="PackedScene" uid="uid://qmthqu5cw6wc" path="res://Scenes/player.tscn" id="1_wrcwy"]
 [ext_resource type="PackedScene" uid="uid://l2susafxl0wb" path="res://Scenes/pause_menu.tscn" id="2_kofij"]
 [ext_resource type="Material" uid="uid://b78vtxktcx0g4" path="res://Materials/floor.tres" id="3_7akni"]
@@ -231,7 +230,6 @@ rings = 1
 [sub_resource type="BoxShape3D" id="BoxShape3D_kycc4"]
 
 [node name="level" type="Node3D"]
-script = ExtResource("1_vt3i8")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_b4sap")
@@ -244,9 +242,9 @@ visible = false
 [node name="Player" parent="." instance=ExtResource("1_wrcwy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.664463, 1.53552, 2.8824)
 
-[node name="Monster" parent="." instance=ExtResource("14_gx6pj")]
+[node name="Monster" parent="." node_paths=PackedStringArray("destinations") instance=ExtResource("14_gx6pj")]
 transform = Transform3D(-0.0594283, 0, -0.998233, 0, 1, 0, 0.998233, 0, -0.0594283, -23.7359, 0.657892, 2.26892)
-visible = false
+destinations = [NodePath("../AI_destinations/destination1"), NodePath("../AI_destinations/destination2"), NodePath("../AI_destinations/destination3"), NodePath("../AI_destinations/destination4"), NodePath("../AI_destinations/destination5"), NodePath("../AI_destinations/destination6"), NodePath("../AI_destinations/destination7"), NodePath("../AI_destinations/destination8"), NodePath("../AI_destinations/destination9")]
 
 [node name="light3" parent="." instance=ExtResource("7_q5fpx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.71793, 3.75196, 2.75308)
@@ -314,7 +312,7 @@ mesh = SubResource("BoxMesh_lc26a")
 navigation_mesh = SubResource("NavigationMesh_5s61p")
 
 [node name="Closet" parent="basic_level/NavigationLink3D" instance=ExtResource("25_gkanh")]
-transform = Transform3D(1.42767, 0, 0, 0, 1.06017, 0, 0, 0, 1, -3.92711, 1.72054, -21.0161)
+transform = Transform3D(1.42767, 0, 0, 0, 1.06017, 0, 0, 0, 1, -3.92711, 1.70419, -21.0161)
 
 [node name="wall4" type="StaticBody3D" parent="basic_level/NavigationLink3D"]
 transform = Transform3D(54.06, 0, 0, 0, 5.02, 0, 0, 0, 0.16, -0.249925, 2.99617, 31.7471)
@@ -371,6 +369,7 @@ mesh = SubResource("BoxMesh_lc26a")
 transform = Transform3D(54.06, 0, 0, 0, 1, 0, 0, 0, 63.495, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="basic_level/NavigationLink3D/floor"]
+transform = Transform3D(1.3037, 0, 0, 0, 0.999983, 0, 0, 0, 1.01756, 0, 0, 0)
 shape = SubResource("BoxShape3D_safhu")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="basic_level/NavigationLink3D/floor"]
@@ -608,7 +607,35 @@ shape = SubResource("BoxShape3D_kycc4")
 stream = ExtResource("13_43jc5")
 
 [node name="Projector" parent="." instance=ExtResource("24_h2bvs")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.44571, 1.38288, -21.809)
+transform = Transform3D(-3.61999e-06, 0, -1, 0, 1, 0, 1, 0, -3.61999e-06, -1.44571, 1.38288, -21.809)
+
+[node name="AI_destinations" type="Node3D" parent="."]
+
+[node name="destination1" type="Node3D" parent="AI_destinations"]
+
+[node name="destination2" type="Node3D" parent="AI_destinations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -24.843)
+
+[node name="destination3" type="Node3D" parent="AI_destinations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.9677, 0, -24.843)
+
+[node name="destination4" type="Node3D" parent="AI_destinations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.9677, 0, 2.29602)
+
+[node name="destination5" type="Node3D" parent="AI_destinations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.9677, 0, 24.3855)
+
+[node name="destination6" type="Node3D" parent="AI_destinations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.25965, 0, 24.3855)
+
+[node name="destination7" type="Node3D" parent="AI_destinations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.6766, 0, 24.3855)
+
+[node name="destination8" type="Node3D" parent="AI_destinations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.6766, 0, 2.3915)
+
+[node name="destination9" type="Node3D" parent="AI_destinations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.6766, 0, -20.7537)
 
 [connection signal="body_entered" from="Scare_Triggers/scare_trigger2" to="Scare_Triggers/scare_trigger2" method="trigger_entered"]
 [connection signal="body_entered" from="Scare_Triggers/monster_spawner" to="Scare_Triggers/monster_spawner" method="spawn_monster"]

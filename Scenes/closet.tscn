@@ -181,7 +181,7 @@ collision_mask = 11
 script = ExtResource("3_foo6v")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D/DoorR/hinge/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 2.30635, 0, 0, 0, 0.183178, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 2.30635, 0, 0, 0, 0.246626, 0, 0, 0)
 shape = SubResource("BoxShape3D_fksae")
 
 [node name="door_base" type="MeshInstance3D" parent="StaticBody3D/DoorR/hinge/StaticBody3D"]
@@ -227,7 +227,7 @@ collision_mask = 11
 script = ExtResource("8_c88ea")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D/DoorL/hinge/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 2.30635, 0, 0, 0, 0.183178, 0, 0, 0)
+transform = Transform3D(1, 0, 5.68434e-14, 0, 2.30635, 0, 0, 0, 0.275939, 0, 0, 0)
 shape = SubResource("BoxShape3D_fksae")
 
 [node name="door_base" type="MeshInstance3D" parent="StaticBody3D/DoorL/hinge/StaticBody3D"]

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://on27ccaatdnt"]
+[gd_scene load_steps=3 format=3 uid="uid://on27ccaatdnt"]
 
 [ext_resource type="Script" path="res://Scripts/death.gd" id="1_jtrke"]
+[ext_resource type="AudioStream" uid="uid://nrhcrajrjlrm" path="res://Sounds/deathSound.mp3" id="2_42t13"]
 
 [node name="Death" type="Control"]
 layout_mode = 3
@@ -9,20 +10,38 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 script = ExtResource("1_jtrke")
 scene_name = "level1"
+metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 0
-offset_right = 1160.0
-offset_bottom = 661.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-layout_mode = 0
-offset_left = 325.0
-offset_top = 208.0
-offset_right = 1012.0
-offset_bottom = 581.0
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -847.0
+offset_top = -87.0
+offset_right = -19.0
+offset_bottom = 219.0
+grow_horizontal = 0
+grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 86
-text = "U dead lol"
+text = "You are DEAD"
+metadata/_edit_use_anchors_ = true
+
+[node name="death_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_42t13")
+autoplay = true
