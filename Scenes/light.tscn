@@ -44,18 +44,21 @@ _data = {
 "flashing_light": SubResource("Animation_4xqgq")
 }
 
-[node name="light" type="Node3D"]
+[node name="oudoor_light" type="Node3D"]
 script = ExtResource("1_v3svi")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
 material_override = ExtResource("1_w5w15")
 cast_shadow = 0
 mesh = SubResource("SphereMesh_5kld3")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.880031, 0)
+light_color = Color(1, 1, 0.92549, 1)
 shadow_enabled = true
-omni_range = 8.0
+omni_range = 12.96
+omni_attenuation = 1.25
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

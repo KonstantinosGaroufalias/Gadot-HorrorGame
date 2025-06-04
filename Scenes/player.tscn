@@ -28,7 +28,6 @@ walk_footsteps = Array[AudioStream]([ExtResource("2_ahgup"), ExtResource("3_m6st
 shape = SubResource("CapsuleShape3D_eng40")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-visible = false
 cast_shadow = 0
 mesh = SubResource("CapsuleMesh_b6frt")
 

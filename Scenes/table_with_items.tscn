@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://c87rbwtl3kfq1"]
+
+[ext_resource type="PackedScene" uid="uid://bukx3h0j51syq" path="res://Scenes/table.tscn" id="1_tknc7"]
+[ext_resource type="PackedScene" uid="uid://biubgprs8nak3" path="res://Scenes/flashlight.tscn" id="2_bja56"]
+[ext_resource type="AudioStream" uid="uid://1auvok010elm" path="res://Sounds/pickupSound.mp3" id="3_b15hk"]
+[ext_resource type="PackedScene" uid="uid://dkbrxlx8aaqwi" path="res://Scenes/key.tscn" id="4_yejea"]
+
+[node name="table_with_items" type="Node3D"]
+
+[node name="table" parent="." instance=ExtResource("1_tknc7")]
+transform = Transform3D(1.38551, 0, 0, 0, 1.53315, 0, 0, 0, 2.47918, -0.0268601, 0.531021, -0.246205)
+
+[node name="flashlight" parent="table" instance=ExtResource("2_bja56")]
+transform = Transform3D(0.142689, 0, 0.00113086, 0, 0.17, 0, -0.00139716, 0, 0.115492, 0.583, 0.766584, 0.360789)
+
+[node name="flashlight_pickup" type="AudioStreamPlayer3D" parent="table/flashlight"]
+transform = Transform3D(5.05776, 0, -0.0276768, 0, 3.83678, 0, 0.061186, 0, 3.49219, -6.43448, -6.50139, 25.8194)
+stream = ExtResource("3_b15hk")
+
+[node name="key" parent="table" instance=ExtResource("4_yejea")]
+transform = Transform3D(0.382531, 0, 0, 0, -0.00837968, 0.345592, 0, -0.213717, -0.00518208, 0.713743, 0.683629, -0.189103)
+
+[node name="key_pickup" type="AudioStreamPlayer3D" parent="table/key"]
+transform = Transform3D(1.88679, 0, 0, 0, -0.0457363, -1.88624, 0, 1.88624, -0.0457363, -0.213324, 0.0387745, 0.048425)
+stream = ExtResource("3_b15hk")

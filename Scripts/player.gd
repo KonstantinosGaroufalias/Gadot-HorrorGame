@@ -7,7 +7,8 @@ var sprint_refresh_amount = 0.4
 var SPRINT_SPEED = 6
 const JUMP_VELOCITY = 4.5
 var sprint_slider
-var movable = false
+#change if there is a cutscene!!!!!!!!!!!!!!!!!!
+var movable = true
 var rng = RandomNumberGenerator.new()
  # Initialize here
 @export var walk_footsteps: Array[AudioStream]

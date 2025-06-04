@@ -29,12 +29,12 @@
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 
-[sub_resource type="Sky" id="Sky_3sfxa"]
+[sub_resource type="Sky" id="Sky_fdgym"]
 sky_material = SubResource("ProceduralSkyMaterial_8l152")
 
 [sub_resource type="Environment" id="Environment_b4sap"]
 background_mode = 1
-sky = SubResource("Sky_3sfxa")
+sky = SubResource("Sky_fdgym")
 tonemap_mode = 3
 ssao_enabled = true
 glow_enabled = true
@@ -298,7 +298,6 @@ locked = true
 
 [node name="ceiling" type="StaticBody3D" parent="basic_level"]
 transform = Transform3D(54.06, 0, 0, 0, 1, 0, 0, 0, 63.495, 0.0056777, 5.15142, -0.0128736)
-visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="basic_level/ceiling"]
 transform = Transform3D(1, 0, 0, 0, 1.2, 0, 0, 0, 1, 0, 0, 0)
@@ -573,7 +572,7 @@ mesh = SubResource("CapsuleMesh_gfj27")
 [node name="Scare_Triggers" type="Node3D" parent="."]
 
 [node name="scare_trigger2" type="Area3D" parent="Scare_Triggers" node_paths=PackedStringArray("animationPlayer", "scare_sound")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.93376, 1.54738, 3.0641)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.93376, 1.54738, 4.41315)
 script = ExtResource("14_v8o20")
 animationPlayer = NodePath("../../scares/scare2/AnimationPlayer2")
 anim_name = "run"
