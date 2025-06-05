@@ -52634,7 +52634,7 @@ transform = Transform3D(1, 0, 0, 0, 1, -2.13163e-14, 0, 0, 1, 0.000229163, 0, 0.
 shape = SubResource("ConcavePolygonShape3D_mr6ci")
 
 [node name="houselight2" parent="." instance=ExtResource("144_iijin")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.53953, 3.10202, -0.355532)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.61396, 3.10202, -0.355532)
 
 [node name="houselight" parent="." instance=ExtResource("144_iijin")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.19205, 3.76547, -0.281296)
