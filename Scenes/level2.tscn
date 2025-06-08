@@ -1,4 +1,4 @@
-[gd_scene load_steps=2565 format=4 uid="uid://dydysjfjk4o0q"]
+[gd_scene load_steps=2569 format=4 uid="uid://dydysjfjk4o0q"]
 
 [ext_resource type="PackedScene" uid="uid://qmthqu5cw6wc" path="res://Scenes/player.tscn" id="2_4awdh"]
 [ext_resource type="PackedScene" uid="uid://q5rdo46y3dly" path="res://Scenes/ui.tscn" id="3_dtty5"]
@@ -146,6 +146,7 @@
 [ext_resource type="PackedScene" uid="uid://2wea34wokyxh" path="res://Scenes/light.tscn" id="144_iijin"]
 [ext_resource type="PackedScene" uid="uid://c87rbwtl3kfq1" path="res://Scenes/table_with_items.tscn" id="145_d341a"]
 [ext_resource type="AudioStream" uid="uid://1auvok010elm" path="res://Sounds/pickupSound.mp3" id="146_288c4"]
+[ext_resource type="Script" path="res://Scripts/beggining_cutscene.gd" id="147_6g3ue"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mmr25"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -164,6 +165,9 @@ fog_light_color = Color(0.180465, 0.199519, 0.229475, 1)
 fog_density = 0.2605
 volumetric_fog_enabled = true
 volumetric_fog_albedo = Color(0.577008, 0.577008, 0.577008, 1)
+
+[sub_resource type="FogMaterial" id="FogMaterial_o0ere"]
+albedo = Color(0, 0, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_my3ae"]
 resource_name = "AsphaltDamaged"
@@ -41475,13 +41479,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_br3ki")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wheh0"]
-resource_name = "Emissor"
-vertex_color_use_as_albedo = true
-albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
-emission_enabled = true
-emission = Color(0.0140513, 1, 0, 1)
-
 [sub_resource type="ArrayMesh" id="ArrayMesh_3xxjq"]
 _surfaces = [{
 "aabb": AABB(-0.0166345, -0.00197512, -0.0117108, 0.033269, 0.00438822, 0.0239262),
@@ -41526,7 +41523,6 @@ _surfaces = [{
 "format": 34359742487,
 "index_count": 6,
 "index_data": PackedByteArray("AAABAAIAAgADAAAA"),
-"material": SubResource("StandardMaterial3D_wheh0"),
 "name": "Emissor",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -41580,7 +41576,6 @@ _surfaces = [{
 "format": 34359742487,
 "index_count": 6,
 "index_data": PackedByteArray("AAABAAIAAgADAAAA"),
-"material": SubResource("StandardMaterial3D_wheh0"),
 "name": "Emissor",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -41634,7 +41629,6 @@ _surfaces = [{
 "format": 34359742487,
 "index_count": 6,
 "index_data": PackedByteArray("AAABAAIAAgADAAAA"),
-"material": SubResource("StandardMaterial3D_wheh0"),
 "name": "Emissor",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -46857,22 +46851,89 @@ shadow_mesh = SubResource("ArrayMesh_ef3vy")
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_mr6ci"]
 data = PackedVector3Array(-0.0472, 0.049, 0, 0.0381, -0.0136, 0, 0.0039, -0.0136, 0, -0.0472, 0.049, 0, 0.0859, 0.049, 0, 0.0381, -0.0136, 0, -0.0472, -0.0684, 0, -0.0472, 0.049, 0, 0.0039, -0.0136, 0, 0.0195, -0.0684, 0, -0.0472, -0.0684, 0, 0.005, -0.0388, -0.0001, 0.0195, -0.0684, 0, 0.005, -0.0388, -0.0001, 0.0157, -0.0392, 0, -0.0472, -0.0684, 0, 0.0039, -0.0136, 0, 0.005, -0.0388, -0.0001, 0.0157, -0.0392, 0, 0.022, -0.0684, 0, 0.0195, -0.0684, 0, 0.0381, -0.0392, 0, 0.022, -0.071, 0, 0.022, -0.0684, 0, 0.0859, -0.0913, 0, 0.022, -0.0913, 0, 0.022, -0.071, 0, 0.0859, 0.049, 0, 0.0859, -0.0913, 0, 0.022, -0.071, 0, 0.0381, -0.0392, 0, 0.0859, 0.049, 0, 0.022, -0.071, 0, 0.0381, -0.0392, 0, 0.0381, -0.0136, 0, 0.0859, 0.049, 0, 0.0157, -0.0392, 0, 0.0381, -0.0392, 0, 0.022, -0.0684, 0)
 
+[sub_resource type="Animation" id="Animation_q0crh"]
+resource_name = "beggining_drive"
+length = 15.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("cutscene_cam:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10, 14),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-3.8147e-06, 0, -72.4732), Vector3(28.4944, 0, -82.395)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("cutscene_cam:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 10, 14),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, -1.5708, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_h8rhi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("cutscene_cam:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("cutscene_cam:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.5708, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cx6i6"]
+_data = {
+"RESET": SubResource("Animation_h8rhi"),
+"beggining_drive": SubResource("Animation_q0crh")
+}
+
 [node name="Level2" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12957, 0)
 
 [node name="WorldEnvironment2" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_eaedx")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.987617, 0.152532, 0.0366901, 0.134135, -0.942288, 0.306758, 0.0813631, -0.298038, -0.95108, 0.670902, 84.4827, -70.935)
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment2"]
+transform = Transform3D(0.987617, 0.152532, 0.0366902, 0.134135, -0.942288, 0.306758, 0.0813631, -0.298038, -0.95108, 0.670902, 85.6123, -70.935)
 light_color = Color(0.377919, 0.377919, 0.377919, 1)
 shadow_enabled = true
 directional_shadow_mode = 0
 directional_shadow_blend_splits = true
 directional_shadow_max_distance = 65.0
 
+[node name="FogVolume" type="FogVolume" parent="WorldEnvironment2"]
+transform = Transform3D(10.2329, 0, 0, 0, 10.2329, 0, 0, 0, 17.6541, -153.848, 4.89345, -60.1381)
+size = Vector3(4.31152, 2, 2)
+shape = 0
+material = SubResource("FogMaterial_o0ere")
+
 [node name="Player" parent="." instance=ExtResource("2_4awdh")]
-transform = Transform3D(0.749684, 0, 0.0217787, 0, 0.75, 0, -0.0217787, 0, 0.749684, -7.66795, 1.22406, 25.7866)
+transform = Transform3D(0.849642, 0, 0.0246825, 0, 0.85, 0, -0.0246825, 0, 0.849642, -7.66795, 1.22406, 25.7866)
 floor_stop_on_slope = false
 
 [node name="UI" parent="." instance=ExtResource("3_dtty5")]
@@ -46888,7 +46949,7 @@ mesh = SubResource("ArrayMesh_sh0l3")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="House"]
-transform = Transform3D(627.738, 0, 0, 0, -2.36242e-05, 49.088, 0, -540.459, -2.1457e-06, -31.6055, 0.0544043, -12.9357)
+transform = Transform3D(595.798, 0, 0, 0, -2.52196e-05, 49.0253, 0, -576.958, -2.14296e-06, -31.6055, 0.0544043, -12.9357)
 shape = SubResource("ConcavePolygonShape3D_228j8")
 
 [node name="AsphaltDamaged_001" type="MeshInstance3D" parent="House"]
@@ -52640,9 +52701,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.61396, 3.10202, -0.355532)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.19205, 3.76547, -0.281296)
 
 [node name="table_with_items" parent="." instance=ExtResource("145_d341a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.2056, -0.879336, 24.0372)
+transform = Transform3D(0.99947, 0, 0, 0, 0.99947, 0, 0, 0, 0.99947, -19.2056, -0.879336, 24.0372)
 
 [node name="PlayerSounds" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 179.263, 0)
 
 [node name="pickup" type="AudioStreamPlayer" parent="PlayerSounds"]
 stream = ExtResource("146_288c4")
+
+[node name="beggining_cutscene" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -144.683, 0.787, -56.8517)
+script = ExtResource("147_6g3ue")
+
+[node name="cutscene_cam" type="Camera3D" parent="beggining_cutscene"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+far = 30.0
+
+[node name="cutscene_anim_player" type="AnimationPlayer" parent="beggining_cutscene"]
+libraries = {
+"": SubResource("AnimationLibrary_cx6i6")
+}

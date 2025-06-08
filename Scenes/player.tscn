@@ -41,12 +41,13 @@ cull_mask = 1032191
 
 [node name="flashlight" type="SpotLight3D" parent="head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.265086, -0.0220039, 0.0593709)
-visible = false
-light_energy = 4.67
-light_volumetric_fog_energy = 0.42
+light_color = Color(1, 1, 0.901961, 1)
+light_energy = 3.0
+light_volumetric_fog_energy = 0.0
 shadow_enabled = true
-spot_range = 15.422
-spot_angle = 43.12
+spot_range = 10.982
+spot_angle = 31.92
+spot_angle_attenuation = 2.21914
 script = ExtResource("3_80766")
 
 [node name="toggle" type="AudioStreamPlayer" parent="head/flashlight"]

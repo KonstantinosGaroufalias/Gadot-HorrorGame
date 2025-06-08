@@ -53,10 +53,11 @@ shape = SubResource("BoxShape3D_1bjki")
 
 [node name="flashlight" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00246553, 0.16216, -0.872519)
+visible = false
 light_energy = 5.923
 light_specular = 2.141
 spot_range = 17.603
-spot_angle = 28.92
+spot_angle = 13.32
 script = ExtResource("3_nxmqc")
 
 [node name="toggle" type="AudioStreamPlayer" parent="."]

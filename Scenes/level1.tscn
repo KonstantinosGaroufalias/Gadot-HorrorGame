@@ -298,6 +298,7 @@ locked = true
 
 [node name="ceiling" type="StaticBody3D" parent="basic_level"]
 transform = Transform3D(54.06, 0, 0, 0, 1, 0, 0, 0, 63.495, 0.0056777, 5.15142, -0.0128736)
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="basic_level/ceiling"]
 transform = Transform3D(1, 0, 0, 0, 1.2, 0, 0, 0, 1, 0, 0, 0)
